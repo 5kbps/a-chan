@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Настройки</title>
+		<noscript>
+		<link rel="stylesheet" type="text/css" href="/static/style.php?noscript" />
+		</noscript>
+		<link rel="stylesheet" type="text/css" id="styleman" href="/static/style.php">
+		<style>
+			body { margin: 0 auto; padding: 8px; max-width: 1000px; }
+			input{
+				vertical-align: middle;
+				display: inline-block;
+				outline: 0;
+			}
+			.help-toggle{
+				cursor: pointer;
+			}
+			.help{
+				margin-left: 30px;
+			}
+			.wb-item{
+				display: block;
+			}
+			input[type="checkbox"]{
+				opacity: 1 !important;
+			}
+		</style>
+		<script type="text/javascript" src="static/js/min/settings.min.js"></script>
+	</head>
+	<body>
+		<noscript id="you-need-js">
+		<h1>Включите JavaScript чтобы изменять все доступные настройки!</h1>
+		</noscript>
+		<div id="settings">
+			<div class="js-only">
+				<h3 class="gt">Автообновление</h3>
+				<p>
+					<label for="autoupdate"> <input type="checkbox" id="autoupdate" name="autoupdate" checked>Автообновление треда</label>
+				</p>
+				<p>
+					<label>
+						Интервал:
+						<input id="updateinterval" onchange="handleRange(this)" type="range" min="40" max="300" value="40" />
+						<span id="updateinterval-value"></span>с.
+					</label>
+				</p>
+				<h3 class="gt">Уведомления о новых постах</h3>
+				<p id="watchboards-p">
+				</p>
+				<p>
+					<label>
+						<label for="tab_notification"> <input type="checkbox" id="tab_notification" name="tab_notification" checked>Значок на вкладке</label>
+					</label>
+				</p>
+			</div>
+			<h3 class="gt">Оформление</h3>
+			<p>
+				<label class="gt">Стиль:</label>
+				<form method="POST" action="/api.php?action=setstyle">
+					<select id="style" name="style" onchange="changeStyle(this.value)">
+						<option value="Muon">Muon</option>
+						<option value="Neutron">Neutron</option>
+						<option value="Burichan">Burichan</option>
+						<option value="Futaba">Futaba</option>
+						<!--<option value="Achaba">Achaba</option>-->
+						<option value="Gentoo">Gentoo</option>
+						<option value="Photon">Photon</option>
+					</select>
+					<noscript>
+						<input type="submit" value="Сохранить">
+					</noscript>
+				<label for="center_posts"> <input type="checkbox" id="center_posts" name="center_posts" autocomplete="off">Посты по центру</label>
+				</form>
+			</p>
+			<div class="js-only">
+				<p>
+					<label for="time_formatting"><input type="checkbox" name="time_formatting" id="time_formatting">Формат даты:</label>
+					<input id="time_format" onkeyup="timeFormatPreview()">
+					<span class="help-toggle" id="help-time_format-toggle">?</span>
+					<div id="time-preview"></div>
+					<table class="help" id="help-time_format">
+						<tr>
+							<td>
+								yyyy
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								2015
+							</td>
+							<td>
+								Год
+							</td>
+						</tr>
+						<tr>
+							<td>
+								yy
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								15
+							</td>
+							<td>
+								Год
+							</td>
+						</tr>
+						<tr>
+							<td>
+								MMMM
+							</td>
+							<td>
+								→
+							</td>
+							<td class="gt">
+								Январь
+							</td>
+							<td>
+								Месяц
+							</td>
+						</tr>
+						<tr>
+							<td>
+								MMM
+							</td>
+							<td>
+								→
+							</td>
+							<td class="gt">
+								Янв
+							</td>
+							<td>
+								Месяц
+							</td>
+						</tr>
+						<tr>
+							<td>
+								MM
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								01
+							</td>
+							<td>
+								Месяц
+							</td>
+						</tr>
+						<tr>
+							<td>
+								M
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								1
+							</td>
+							<td>
+								Месяц
+							</td>
+						</tr>
+						<tr>
+							<td>
+								d
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								1
+							</td>
+							<td>
+								День
+							</td>
+						</tr>
+						<tr>
+							<td>
+								dd
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								01
+							</td>
+							<td>
+								День
+							</td>
+						</tr>
+						<tr>
+							<td>
+								ddd
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								Пнд
+							</td>
+							<td>
+								День недели
+							</td>
+						</tr>
+						<tr>
+							<td>
+								dddd
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								Понедельник
+							</td>
+							<td>
+								День недели
+							</td>
+						</tr>
+						<tr>
+							<td>
+								h
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								1
+							</td>
+							<td>
+								Час
+							</td>
+						</tr>
+						<tr>
+							<td>
+								hh
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								11
+							</td>
+							<td>
+								Час
+							</td>
+						</tr>
+						<tr>
+							<td>
+								H
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								23
+							</td>
+							<td>
+								Час
+							</td>
+						</tr>
+						<tr>
+							<td>
+								mm
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								01
+							</td>
+							<td>
+								Минуты
+							</td>
+						</tr>
+						<tr>
+							<td>
+								ss
+							</td>
+							<td>
+								→
+							</td>
+							<td>
+								09
+							</td>
+							<td>
+								Секунды
+							</td>
+						</tr>
+						<tr>
+							<td colspan=4>
+								<i>Можно использовать HTML-теги.</i>
+							</td>
+						</tr>
+					</table>
+				</p>
+				<p>
+					<label for="reflinks">
+						<input type="checkbox" name="reflinks" id="reflinks">
+						Ссылки на посты
+					</label>
+				</p>
+				<p>
+					Расположение ссылок:
+					<select id="reflinks_position">
+						<option value="top" class="gt">Сверху</option>
+						<option value="bottom" class="gt">Снизу</option>
+					</select>
+				</p>
+				<p>
+					<label for="expandspoilers">
+						<input type="checkbox" name="expandspoilers" id="expandspoilers">
+						Раскрывать спойлеры
+					</label>
+				</p>
+				<h3>YouTube</h3>
+				<p>
+					<label for="youtube">
+						<input type="checkbox" name="youtube" id="youtube">
+						<span class="gt">Показывать превью для YouTube</span>
+					</label>
+				</p>
+				<p>
+					<label for="youtube_info">
+						<input type="checkbox" name="youtube_info" id="youtube_info">
+						<span>Загружать название и длительность</span>
+					</label>
+				</p>
+				<p>
+					<label>
+						Количество превью для YouTube в посте:
+						<input id="max_youtube" onchange="handleRange(this)" type="range" min="1" max="10" value="1" />
+						<span id="max_youtube-value"></span>
+					</label>
+				</p>
+				<button onclick="defaultSettings()" class="gt">Defaults</button>
+				<button onclick="applySettings()" class="gt">Apply</button>
+			</div>
+			<br><br><br>
+		</div>
+		<script type="text/javascript">
+			init()
+		</script>
+	</body>
+</html>

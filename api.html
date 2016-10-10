@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style>
+	    body { margin: 0 auto; padding: 8px; max-width: 1000px; }
+	    input { font-family: monospace; width: 100%; }
+	    .fspoilertext{  display: none; }
+	    .fspoileropen{  display: block; }
+	    .middletd{	width: 40px; opacity: 0.4; padding-left: 20px;}
+	    .mtd { font-family: monospace; }
+	</style>
+	<title>API</title>
+</head>
+<body>
+<h3>API А-чана </h3>
+<p>
+/api.php?action=(lastpost|postpreview|readthread|jsonthread|check_posting|setstyle)
+</p>
+<table border="1">
+	<tr>
+		<td>
+			<b>Action</b>
+		</td>
+		<td>
+			<b>Methods</b>
+		</td>
+		<td>
+			<b>Parameters</b>
+		</td>
+		<td>
+			<b>Description</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			lastpost
+		</td>
+		<td>
+			POST & GET
+		</td>
+		<td>
+			board = (all|<i>board name</i>)
+		</td>
+		<td>
+			Номер последнего поста в разделе или номера  в последних постов во всех разделах в JSON
+		</td>
+	</tr>
+	<tr>
+		<td>
+			postpreview
+		</td>
+		<td>
+			POST & GET
+		</td>
+		<td>
+			bbcode = (on)?<br>
+			wakabamark = (on)?<br>
+			other = (on)?<br>
+			message = <i>text</i><br>
+			board = <i>board name</i><br>
+			thread = <i>thread number</i><br>
+		</td>
+		<td>
+			Предпросмотр сообщения, форматированного в соответствии с параметрами.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			readthread
+		</td>
+		<td>
+			POST & GET
+		</td>
+		<td>
+			board = <i>board name</i><br>
+			thread = <i>thread number</i><br>
+			lastpost = <i>last post</i><br>
+		</td>
+		<td>
+		{<br>
+			count: <i>количество загруженных постов</i>,<br>
+			html: <i>посты в HTML</i><br>
+		}<br>
+		lastpost=0 - получить весь тред целиком
+		</td>
+	</tr>
+	<tr>
+		<td>
+			jsonthread
+		</td>
+		<td>
+			POST & GET
+		</td>
+		<td>
+			board = <i>board name</i><br>
+			thread = <i>thread number</i><br>
+			lastpost = <i>last post</i><br>
+		</td>
+		<td>
+		Посты в JSON.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			check_posting
+		</td>
+		<td>
+			POST & GET
+		</td>
+		<td>
+			board = <i>board name</i>
+		</td>
+		<td>
+			Узнать текущие ограничения постинга (нужна ли капча + есть ли таймаут).<br>
+			{<br>
+			token - <i>токен для капчи</i>,<br>
+			captcha_min_length - <i>минимальная длина капчи</i>,<br>
+			powvalue - <i>текущая сложность POW</i>,<br>
+			timeout - <i>сколько секунд нужно подождать, перед тем, как постить</i>,<br>
+			ttl - <i>время жизни капчи</i><br>
+			}
+
+		</td>
+	</tr>
+	<tr>
+		<td>
+			setstyle
+		</td>
+		<td>
+			POST & GET
+		</td>
+		<td>
+			style = (Burichan|Futaba|Gentoo|Muon|Neutron|Photon)<br>
+			center_posts = (on)?
+		</td>
+		<td>
+			Изменить стиль и настройки центрирования постов (устанавливает cookie)
+		</td>
+	</tr>
+</table>
+</body>
+</html>

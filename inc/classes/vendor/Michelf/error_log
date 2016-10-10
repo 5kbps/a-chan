@@ -1,0 +1,2 @@
+[24-Sep-2014 14:10:01 America/New_York] PHP Fatal error:  Interface 'Michelf\MarkdownInterface' not found in /home/frauvvfk/domains/a-chan.frauk.pw/www/inc/classes/vendor/Michelf/Markdown.php on line 20
+[24-Sep-2014 14:10:02 America/New_York] PHP Fatal error:  Class 'Michelf\Markdown' not found in /home/frauvvfk/domains/a-chan.frauk.pw/www/inc/classes/vendor/Michelf/MarkdownExtra.php on line 18

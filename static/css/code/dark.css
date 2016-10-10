@@ -1,0 +1,37 @@
+
+/* code */
+.code-language-name{
+    color: #993;
+    font-weight: bold;
+}
+
+.code-inline, .code-block{
+	background-color: #333;
+	color: #CCC;
+}
+
+.code-block {
+	border: 1px dashed rgba(255,255,255,0.2);
+}
+
+.imp {font-weight: bold; color: red;}
+.kw1, .kw2, .kw3, .kw4, .kw5 {color: #CC9; font-weight: bold;}
+.co1 {color: #999999; font-style: italic;}
+.co2 {color: #999999; font-style: italic;}
+.coMULTI {color: #999999; font-style: italic;}
+.es0 {color: #000099; font-weight: bold;}
+.br0 {color: #FFFFFF;}
+.sy0 {color: #EECC55;}
+.st0 {color: #CC6633;}
+.st_h {color: #CC6633;}
+.nu0 {color: #9999CC;}
+.me1 {color: #CC99CC;}
+.re0 {color: #55CC77;}
+.re1 {color: #55CC77;}
+.re2 {color: #55CC77;}
+.re3 {color: #CC5577;}
+.re4 {color: #55CC77;}
+.re5 {color: #55CC77;}
+.re6 {color: #7777CC;}
+.re7 {color: #CC5577;}
+.re8 {color: #55CC77;}

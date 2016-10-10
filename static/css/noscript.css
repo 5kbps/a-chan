@@ -1,0 +1,19 @@
+.js-only {
+  display: none;
+}
+.post-hide,
+.thread-expand,
+.post-reply,
+#tagbuttons-tr {
+  display: none !important;
+}
+.fspoilertitle {
+  cursor: default !important;
+}
+#noscript-captcha-input {
+  width: 157px;
+}
+#noscript-capthca-image {
+  width: 160px;
+  height: 75px;
+}
